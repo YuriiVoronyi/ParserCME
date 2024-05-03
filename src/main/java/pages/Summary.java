@@ -21,12 +21,6 @@ public class Summary extends BasePage{
     @FindBy(xpath = "//*[@id='ctl00_ucSelector_hlExpiration']")
     WebElement clickmenu;
 
-//    public Summary openMenu() {//Открываем выпадающее меню для выбора типа контракта
-//        click(clickmenu);
-//        return this;
-//    }
-    //*[@id="ctl00_ucSelector_hlExpiration"]/span/text()
-    //*[@id="ctl00_ucSelector_imgFilter"]
     @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']")//Колл-Пут Недели
     WebElement callputweek;
 

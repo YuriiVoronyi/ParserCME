@@ -22,10 +22,6 @@ public class PricingSheets extends BasePage {
     AppRepository appRepository = new AppRepository();
 
     String numberString;
-    //
-//    private By clickEOM_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl6_lvExpirations_ctrl0_lbExpiration']");
-//
-//    WebElement choiceEOM_Locator = driver.findElement(clickEOM_Locator);
 
     @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl6_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement clickEOM_Locator;

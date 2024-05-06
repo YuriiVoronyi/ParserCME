@@ -3,11 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.maxpain.*;
 import repositories.AppRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.Duration;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,6 +22,9 @@ public class OpenInteresSB extends BasePage {
     }
 
     AppRepository appRepository = new AppRepository();
+
+    // Установка максимального времени ожидания в 60 секунд
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     private By clickEOW_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']");
     private By clickEOA_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']");
@@ -43,6 +49,7 @@ public class OpenInteresSB extends BasePage {
 //0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
     //Локатор кнопки модального окна
+    WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_ucChartTB_hlMaxPain']")));
     private By modalButtonLocator = By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_ucChartTB_hlMaxPain']");
     WebElement modalButton = driver.findElement(modalButtonLocator);
 
@@ -73,11 +80,12 @@ public class OpenInteresSB extends BasePage {
     //0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
     public OpenInteresSB getMaxPainEOM(BasePage obj) {
+        //modalButton.click();
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_ucChartTB_hlMaxPain']")));
+        nextElement.click();// Открываем попап (фрейм с балансом)
 
-        modalButton.click();// Открываем попап (фрейм с балансом)
-
-        pause(5000);
-
+        //pause(5000);
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("mainFrame")));
         driver.switchTo().frame("mainFrame");// Перехожу на фрейм по идентификатору
 
         WebElement element = driver.findElement(modalElementLocator);// Нахожу строку с балансом по локатору
@@ -89,50 +97,71 @@ public class OpenInteresSB extends BasePage {
 
         driver.switchTo().defaultContent();// Возвращаюсь с фрейма на основную страницу
 
-        pause(1000);
+        //pause(1000);
 
-        closeButton.click();// Закрываю попап (фрейм)
-
+        //closeButton.click();// Закрываю попап (фрейм)
+        WebElement nextElement3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='globalContextPopup']/div[1]/div[2]/a")));
+        nextElement3.click();
         return this;
     }
 
     public ShowEOA_MaxPain getMaxPainEOA(BasePage obj) {
-        openMenuElement.click();//Открываю меню выбора типа контракта
-        pause(2000);
-        choiceEOA_Locator.click();
-        pause(5000);
+        //openMenuElement.click();//Открываю меню выбора типа контракта
+        //pause(2000);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_imgFilter']")));
+        nextElement.click();
+        //choiceEOA_Locator.click();
+        //pause(5000);
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']")));
+        nextElement2.click();
         return new ShowEOA_MaxPain(driver, obj);//7777777777777777777777777777777777777777777777777777777777777
     }
 
     public ShowEOB_MaxPain getMaxPainEOB(BasePage obj) {
-        openMenuElement.click();//Открываю меню выбора типа контракта
-        pause(2000);
-        choiceEOB_Locator.click();
-        pause(5000);
+//        openMenuElement.click();//Открываю меню выбора типа контракта
+//        pause(2000);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_imgFilter']")));
+        nextElement.click();
+        //choiceEOB_Locator.click();
+        //pause(5000);
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']")));
+        nextElement2.click();
         return new ShowEOB_MaxPain(driver, obj);
     }
 
     public ShowEOC_MaxPain getMaxPainEOC(BasePage obj) {
-        openMenuElement.click();//Открываю меню выбора типа контракта
-        pause(2000);
-        choiceEOC_Locator.click();
-        pause(5000);
+//        openMenuElement.click();//Открываю меню выбора типа контракта
+//        pause(2000);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_imgFilter']")));
+        nextElement.click();
+//        choiceEOC_Locator.click();
+//        pause(5000);
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']")));
+        nextElement2.click();
         return new ShowEOC_MaxPain(driver, obj);
     }
 
     public ShowEOD_MaxPain getMaxPainEOD(BasePage obj) {
-        openMenuElement.click();//Открываю меню выбора типа контракта
-        pause(2000);
-        choiceEOD_Locator.click();
-        pause(5000);
+//        openMenuElement.click();//Открываю меню выбора типа контракта
+//        pause(2000);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_imgFilter']")));
+        nextElement.click();
+//        choiceEOD_Locator.click();
+//        pause(5000);
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']")));
+        nextElement2.click();
         return new ShowEOD_MaxPain(driver, obj);
     }
 
     public ShowEOW_MaxPain getMaxPainEOW(BasePage obj) {
-        openMenuElement.click();//Открываю меню выбора типа контракта
-        pause(2000);
-        choiceEOW_Locator.click();
-        pause(5000);
+//        openMenuElement.click();//Открываю меню выбора типа контракта
+//        pause(2000);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_imgFilter']")));
+        nextElement.click();
+//        choiceEOW_Locator.click();
+//        pause(5000);
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']")));
+        nextElement2.click();
         return new ShowEOW_MaxPain(driver, obj);
     }
 
@@ -187,8 +216,10 @@ public class OpenInteresSB extends BasePage {
     }
 
     public PricingSheets getPricingSheets() {
-        openPricingSheets.click();//Открываю закладку Pricing Sheets
-        pause(5000);
+//        openPricingSheets.click();//Открываю закладку Pricing Sheets
+//        pause(5000);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucMenuBar_lvMenuBar_ctrl5_lbMenuItem']")));
+        nextElement.click();
         return new PricingSheets(driver);
     }
 }

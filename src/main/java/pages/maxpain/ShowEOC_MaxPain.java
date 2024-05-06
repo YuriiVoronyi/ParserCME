@@ -3,9 +3,12 @@ package pages.maxpain;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import pages.OpenInteresSB;
 
+import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +20,9 @@ public class ShowEOC_MaxPain extends BasePage {
         super(driver);
         this.balObj = balObj;
     }
+
+    // Установка максимального времени ожидания в 60 секунд
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     //Локатор кнопки модального окна
     private By modalButtonLocator = By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_ucChartTB_hlMaxPain']");
@@ -48,14 +54,17 @@ public class ShowEOC_MaxPain extends BasePage {
 
     public OpenInteresSB getMaxPain(BasePage obj) {
 
-        modalButton.click();// Открываем попап (фрейм с балансом)
+        //modalButton.click();// Открываем попап (фрейм с балансом)
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_ucChartTB_hlMaxPain']")));
+        nextElement.click();// Открываем попап (фрейм с балансом)
 
-        pause(5000);
-
+        //pause(5000);
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("mainFrame")));
         driver.switchTo().frame("mainFrame");// Перехожу на фрейм по идентификатору
 
-        pause(2000);
+        //pause(2000);
 
+        WebElement nextElement3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='highcharts-subtitle']")));
         WebElement element = driver.findElement(modalElementLocator);// Нахожу строку с балансом по локатору
         int maxpain = extractNumber(element.getText().trim());// Выдёргиваю из строки значение баланса
 
@@ -65,9 +74,11 @@ public class ShowEOC_MaxPain extends BasePage {
 
         driver.switchTo().defaultContent();// Возвращаюсь с фрейма на основную страницу
 
-        pause(1000);
+        //pause(1000);
 
-        closeButton.click();// Закрываю попап (фрейм)
+        //closeButton.click();// Закрываю попап (фрейм)
+        WebElement nextElement4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='globalContextPopup']/div[1]/div[2]/a")));
+        nextElement4.click();
 
         return new OpenInteresSB(driver);
     }

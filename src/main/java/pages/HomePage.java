@@ -1,8 +1,13 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class HomePage extends BasePage{
 
@@ -10,11 +15,17 @@ public class HomePage extends BasePage{
         super(driver);
     }
 
+    // Установка максимального времени ожидания в 60 секунд
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
     @FindBy(id = "ctl08_hlProductArrow")
     WebElement click1;
 
     public HomePage choiceHomeMenu1() {
-        click(click1);
+        // Ожидание появления элемента на следующей странице (замените локатор на нужный)
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl08_hlProductArrow")));
+        nextElement.click();
+        //click(click1);
         return this;
     }
 
@@ -22,7 +33,9 @@ public class HomePage extends BasePage{
     WebElement click2;
 
     public HomePage choiceHomeMenu2() {
-        click(click2);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".groups div [groupid='3']")));
+        nextElement.click();
+        //click(click2);
         return this;
     }
 
@@ -30,7 +43,9 @@ public class HomePage extends BasePage{
     WebElement click3;
 
     public QuikStrike getSP500() {
-        click(click3);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title='E-mini S&P 500']")));
+        nextElement.click();
+        //click(click3);
         return new QuikStrike(driver);
     }
 

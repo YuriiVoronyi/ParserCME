@@ -4,14 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import pages.OpenInteresSB;
 import repositories.AppRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.Duration;
 import java.util.List;
 
 public class ShowCallPutEOW extends BasePage {
@@ -21,6 +24,9 @@ public class ShowCallPutEOW extends BasePage {
     }
 
     AppRepository appRepository = new AppRepository();
+
+    // Установка максимального времени ожидания в 60 секунд
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     @FindBy(xpath = "//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[1]/table")
     WebElement tblcall;
@@ -41,6 +47,7 @@ public class ShowCallPutEOW extends BasePage {
 
     //айдишка выпадающего меню по количеству выводимых строк: MainContent_ucViewControl_OpenInterestV2_ucOITB_ddlStrikes
     public ShowCallPutEOW selectAllRows() {
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MainContent_ucViewControl_OpenInterestV2_ucOITB_ddlStrikes")));
         WebElement dropdownMenu = driver.findElement(By.id("MainContent_ucViewControl_OpenInterestV2_ucOITB_ddlStrikes"));
         Select dropdown = new Select(dropdownMenu);
         dropdown.selectByVisibleText("(All)");
@@ -48,7 +55,7 @@ public class ShowCallPutEOW extends BasePage {
     }
 
     public ShowCallPutEOA loadingCallPut() {
-
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[1]/table")));
         try {
             Connection connection = appRepository.getConnection();
             if (tblcall != null) {
@@ -97,6 +104,7 @@ public class ShowCallPutEOW extends BasePage {
                 System.out.println("Элемент tblcall не найден на странице");
             }
 //=============================================================================================
+            WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[2]/table")));
             if (tblput != null) {
                 String nameOfTable2 = "eow_puts";
 
@@ -149,20 +157,24 @@ public class ShowCallPutEOW extends BasePage {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        click(openmenu);
-        pause(5000);//**********************************2000
-
-        click(waytomonday);
-        pause(5000);
+        WebElement nextElement3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_hlExpiration']")));
+        nextElement3.click();
+        //click(openmenu);
+        //pause(5000);//**********************************2000
+        WebElement nextElement4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        nextElement4.click();
+        //click(waytomonday);
+        //pause(5000);
 
         return new ShowCallPutEOA(driver);
 
     }
 
     public OpenInteresSB getOpenInteresSB() {
-        click(oi_sb);
-        pause(5000);
+//        click(oi_sb);
+//        pause(5000);
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_lbOIChart']")));
+        nextElement.click();
         return new OpenInteresSB(driver);
 
     }

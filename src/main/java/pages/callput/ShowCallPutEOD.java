@@ -4,11 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import repositories.AppRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.Duration;
 import java.util.List;
 
 public class ShowCallPutEOD extends BasePage {
@@ -18,6 +21,9 @@ public class ShowCallPutEOD extends BasePage {
     }
 
     AppRepository appRepository = new AppRepository();
+
+    // Установка максимального времени ожидания в 60 секунд
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     @FindBy(xpath = "//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[1]/table")
     WebElement tblcall;
@@ -32,6 +38,7 @@ public class ShowCallPutEOD extends BasePage {
     WebElement waytoeom;
 
     public ShowCallPutEOM loadingCallPut() {
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[1]/table")));
         try {
             Connection connection = appRepository.getConnection();
             if (tblcall != null) {
@@ -80,6 +87,7 @@ public class ShowCallPutEOD extends BasePage {
                 System.out.println("Элемент tblcall не найден на странице");
             }
 //=============================================================================================
+            WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[2]/table")));
             if (tblput != null) {
                 String nameOfTable2 = "eod_puts";
 
@@ -132,12 +140,14 @@ public class ShowCallPutEOD extends BasePage {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        click(openmenu);
-        pause(5000);//**********************************2000
-
-        click(waytoeom);
-        pause(5000);
+        WebElement nextElement3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_hlExpiration']")));
+        nextElement3.click();
+        //click(openmenu);
+        //pause(5000);//**********************************2000
+        WebElement nextElement4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl6_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        nextElement4.click();
+        //click(waytoeom);
+        //pause(5000);
         return new ShowCallPutEOM(driver);
     }
 }

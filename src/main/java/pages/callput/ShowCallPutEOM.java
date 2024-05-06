@@ -4,12 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import pages.OpenInteresSB;
 import repositories.AppRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.Duration;
 import java.util.List;
 
 public class ShowCallPutEOM extends BasePage {
@@ -19,6 +22,9 @@ public class ShowCallPutEOM extends BasePage {
     }
 
     AppRepository appRepository = new AppRepository();
+
+    // Установка максимального времени ожидания в 60 секунд
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     @FindBy(xpath = "//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[1]/table")
     WebElement tblcall;
@@ -33,6 +39,7 @@ public class ShowCallPutEOM extends BasePage {
     WebElement dateofdata;
 
     public OpenInteresSB loadingCallPut(BasePage obj) {
+        WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[1]/table")));
         try {
             obj.setDateOfData(dateofdata.getText());
             Connection connection = appRepository.getConnection();
@@ -82,6 +89,7 @@ public class ShowCallPutEOM extends BasePage {
                 System.out.println("Элемент tblcall не найден на странице");
             }
 //=============================================================================================
+            WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_divTabContent']/div/div[2]/div/div[2]/table")));
             if (tblput != null) {
                 String nameOfTable2 = "eom_puts";
 
@@ -135,9 +143,10 @@ public class ShowCallPutEOM extends BasePage {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        click(oi_sb);
-        pause(5000);
+        WebElement nextElement3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='MainContent_ucViewControl_OpenInterestV2_lbOIChart']")));
+        nextElement3.click();
+        //click(oi_sb);
+        //pause(5000);
 
         return new OpenInteresSB(driver);
     }

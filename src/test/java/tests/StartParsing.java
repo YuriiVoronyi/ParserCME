@@ -18,7 +18,7 @@ public class StartParsing extends TestBase {
 
     BasePage balance = new BasePage();
 
-    private int timeOfPause = 5000;
+    private int timeOfPause = 15000;
 
     @Test
     public void make_Start() {

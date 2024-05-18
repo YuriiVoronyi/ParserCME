@@ -14,8 +14,7 @@ public class AutorisationPage extends BasePage {
         super(driver);
     }
 
-    private String login = "2360615499";
-    private String password = "wvtuhjgt!Lkzajuhjq64";
+
 
     @FindBy(id = "user")
     WebElement formslogin;

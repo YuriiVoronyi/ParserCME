@@ -37,7 +37,7 @@ public class ShowCallPutEOW extends BasePage {
     @FindBy(xpath = "//*[@id='ctl00_ucSelector_hlExpiration']")
     WebElement openmenu;
 
-    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']/div[1]")
+    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement waytomonday;
 
     //99999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -46,7 +46,7 @@ public class ShowCallPutEOW extends BasePage {
     //99999999999999999999999999999999999999999999999999999999999999999999999999999
 
     //айдишка выпадающего меню по количеству выводимых строк: MainContent_ucViewControl_OpenInterestV2_ucOITB_ddlStrikes
-    public ShowCallPutEOW selectAllRows() {
+    public ShowCallPutEOW selectAllRows() {//*[@id="MainContent_ucViewControl_OpenInterestV2_ucOITB_ddlStrikes"]
         WebElement nextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MainContent_ucViewControl_OpenInterestV2_ucOITB_ddlStrikes")));
         WebElement dropdownMenu = driver.findElement(By.id("MainContent_ucViewControl_OpenInterestV2_ucOITB_ddlStrikes"));
         Select dropdown = new Select(dropdownMenu);
@@ -161,7 +161,7 @@ public class ShowCallPutEOW extends BasePage {
         nextElement3.click();
         //click(openmenu);
         //pause(5000);//**********************************2000
-        WebElement nextElement4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        WebElement nextElement4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']/div[1]")));
         nextElement4.click();
         //click(waytomonday);
         //pause(5000);

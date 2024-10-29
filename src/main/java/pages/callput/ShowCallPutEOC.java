@@ -34,7 +34,7 @@ public class ShowCallPutEOC extends BasePage {
     @FindBy(xpath = "//*[@id='ctl00_ucSelector_hlExpiration']")
     WebElement openmenu;
 
-    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']/div[1]")
+    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement waytothursday;
 
     public ShowCallPutEOD loadingCallPut() {
@@ -144,7 +144,7 @@ public class ShowCallPutEOC extends BasePage {
         nextElement3.click();
         //click(openmenu);
         //pause(5000);//**********************************2000
-        WebElement nextElement4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        WebElement nextElement4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']/div[1]")));
         nextElement4.click();
         //click(waytothursday);
         //pause(5000);

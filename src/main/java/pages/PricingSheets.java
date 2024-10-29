@@ -31,16 +31,16 @@ public class PricingSheets extends BasePage {
     @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl6_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement clickEOM_Locator;
 
-    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']/div[1]")
+    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement clickEOD_Locator;
 
-    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']/div[1]")
+    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement clickEOC_Locator;
 
-    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']/div[1]")
+    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement clickEOB_Locator;
 
-    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']/div[1]")
+    @FindBy(xpath = "//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']/div[1]")
     WebElement clickEOA_Locator;
 
     @FindBy(xpath = "//*[@id='ctl00_ucSelector_hlExpiration']")
@@ -171,7 +171,7 @@ public class PricingSheets extends BasePage {
         nextElement.click();
 //        click(clickEOD_Locator);
 //        pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']/div[1]")));
         nextElement2.click();
         return new ShowBoardEOD(driver);
     }
@@ -183,7 +183,7 @@ public class PricingSheets extends BasePage {
         nextElement.click();
 //        click(clickEOC_Locator);
 //        pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']/div[1]")));
         nextElement2.click();
         return new ShowBoardEOC(driver);
     }
@@ -195,7 +195,7 @@ public class PricingSheets extends BasePage {
         nextElement.click();
 //        click(clickEOB_Locator);
 //        pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']/div[1]")));
         nextElement2.click();
         return new ShowBoardEOB(driver);
     }
@@ -207,7 +207,7 @@ public class PricingSheets extends BasePage {
         nextElement.click();
 //        click(clickEOA_Locator);
 //        pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']/div[1]")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']/div[1]")));
         nextElement2.click();
         return new ShowBoardEOA(driver);
     }

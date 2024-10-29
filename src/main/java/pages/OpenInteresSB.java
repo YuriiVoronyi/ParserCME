@@ -26,11 +26,11 @@ public class OpenInteresSB extends BasePage {
     // Установка максимального времени ожидания в 60 секунд
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-    private By clickEOW_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']");
-    private By clickEOA_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']");
-    private By clickEOB_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']");
-    private By clickEOC_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']");
-    private By clickEOD_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']");
+    private By clickEOW_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']");
+    private By clickEOA_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']");
+    private By clickEOB_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']");
+    private By clickEOC_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']");
+    private By clickEOD_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']");
     private By clickEOM_Locator = By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl6_lvExpirations_ctrl0_lbExpiration']");
 
     WebElement choiceEOW_Locator = driver.findElement(clickEOW_Locator);
@@ -112,7 +112,7 @@ public class OpenInteresSB extends BasePage {
         nextElement.click();
         //choiceEOA_Locator.click();
         //pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']")));
         nextElement2.click();
         return new ShowEOA_MaxPain(driver, obj);//7777777777777777777777777777777777777777777777777777777777777
     }
@@ -124,7 +124,7 @@ public class OpenInteresSB extends BasePage {
         nextElement.click();
         //choiceEOB_Locator.click();
         //pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl2_lvExpirations_ctrl0_lbExpiration']")));
         nextElement2.click();
         return new ShowEOB_MaxPain(driver, obj);
     }
@@ -136,7 +136,7 @@ public class OpenInteresSB extends BasePage {
         nextElement.click();
 //        choiceEOC_Locator.click();
 //        pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl3_lvExpirations_ctrl0_lbExpiration']")));
         nextElement2.click();
         return new ShowEOC_MaxPain(driver, obj);
     }
@@ -148,7 +148,7 @@ public class OpenInteresSB extends BasePage {
         nextElement.click();
 //        choiceEOD_Locator.click();
 //        pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl4_lvExpirations_ctrl0_lbExpiration']")));
         nextElement2.click();
         return new ShowEOD_MaxPain(driver, obj);
     }
@@ -160,7 +160,7 @@ public class OpenInteresSB extends BasePage {
         nextElement.click();
 //        choiceEOW_Locator.click();
 //        pause(5000);
-        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl1_lvExpirations_ctrl0_lbExpiration']")));
+        WebElement nextElement2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='ctl00_ucSelector_lvGroupsExpirations_ctrl5_lvExpirations_ctrl0_lbExpiration']")));
         nextElement2.click();
         return new ShowEOW_MaxPain(driver, obj);
     }

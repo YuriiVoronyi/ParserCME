@@ -1,17 +1,14 @@
 package tests;
 
 import org.testng.annotations.Test;
+//import org.junit.Test;
+
 import pages.*;
+
 import pages.autorisation.AutorisationPage;
 
-import pages.board.ShowBoardEOD;
-import pages.board.ShowBoardEOC;
-import pages.board.ShowBoardEOB;
-import pages.board.ShowBoardEOA;
-import pages.board.ShowBoardEOM;
-
+import pages.board.*;
 import pages.callput.*;
-import pages.OpenInteresSB;
 import pages.maxpain.*;
 
 public class StartParsing extends TestBase {
@@ -20,10 +17,12 @@ public class StartParsing extends TestBase {
 
     private int timeOfPause = 15000;
 
+    //@Test
     @Test
     public void make_Start() {
         //Заполняем форму авторизации и по кнопке сабмит переходим на
         //двойную аутентификацию - Duo
+        //new AutorisationPage(driver).enterAutorisation().pressLoginBtn();
         new AutorisationPage(driver).enterAutorisation().pressLoginBtn();
         pause(40000);
 
